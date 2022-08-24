@@ -1,0 +1,3 @@
+ProductId,ProductName,Price,Stock,Description,ProductIcon,CategoryType
+ BOOK-TECH-1025,Become a Guru in Java,50.5,70,Learn Java at your own pace. The author explains how the technology works in easy-to-understand language. This book includes working examples that you can apply to your own projects. Purchase the book and get started today!,assets/images/products/books/book-luv2code-1021.png,0
+ BOOK-TECH-1026,Introduction to Python,47.6,80,Learn Python at your own pace. The author explains how the technology works in easy-to-understand language. This book includes working examples that you can apply to your own projects. Purchase the book and get started today!,assets/images/products/books/book-luv2code-1022.png,0

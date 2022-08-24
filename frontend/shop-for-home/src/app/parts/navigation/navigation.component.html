@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand mb-0 mt-2" [routerLink]="root">
+    <img src="/assets/brand.png" width="80px" height="100%" class="d-inline-block align-top" alt="Logo">ShopForHome
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="navbar-nav" *ngIf="!currentUser || currentUser.role == Role.Customer">
+      <a class="nav-item nav-link mr-2" routerLink="/category/0">
+        Books
+      </a>
+      <a class="nav-item nav-link mr-2" routerLink="/category/1">
+        Coffe Mugs
+      </a>
+      <a class="nav-item nav-link mr-2" routerLink="/category/2">
+        Mouse Pads
+      </a>
+      <a class="nav-item nav-link" routerLink="/category/3">
+        Luggage Tags
+      </a>
+    </div>
+
+    <div class="navbar-nav ml-auto">
+      <a *ngIf="!currentUser || currentUser.role == Role.Customer" class="nav-item btn btn-primary mr-2"
+        routerLink="/cart">
+        Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      </a>
+      <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+        <a class="nav-item btn btn-success mr-4" routerLink="/discount">Discount <i class="fa fa-percent"
+            aria-hidden="true"></i></a>
+        <a class="nav-item btn btn-primary mr-4" (click)=getUsers() routerLink="/admin/user">Users <i class="fa fa-users"
+            aria-hidden="true"></i></a>
+        <a class="nav-item btn btn-info mr-4" routerLink="/seller/product">Stocks <i class="fa fa-info"
+            aria-hidden="true"></i></a>
+      </div>
+      <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Customer">
+        <a class="nav-item btn btn-info mr-4 ml-4" routerLink="/wishlist">Wishlist <i class="far fa-heart"></i></a>
+      </div>
+
+      <ng-container *ngIf="currentUser; else noUser">
+        <a class="nav-item btn btn-success mr-2" routerLink="/order">
+          Orders <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+        </a>
+        <a class="nav-item nav-link mr-2 " routerLink="/profile">
+          {{name}}
+        </a>
+        <a class="nav-item nav-link " (click)="logout()" routerLink="/login" [queryParams]="{logout: true}">
+          Logout
+        </a>
+      </ng-container>
+      <ng-template #noUser>
+        <a class="nav-item nav-link mr-2 ml-2" routerLink="/login">
+          Login
+        </a>
+        <a class="nav-item nav-link " routerLink="/register">
+          Register
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</nav>
